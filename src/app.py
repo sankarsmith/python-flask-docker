@@ -11,13 +11,11 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     text = request.args.get("text")
-    try:
-        sentences = nltk.sent_tokenize(text)
-        sentences = [nltk.word_tokenize(sent) for sent in sentences]
-        sentences = [nltk.pos_tag(sent) for sent in sentences]
-        return jsonify(sentences)
-    except:
-        return render_template('error.html')
+    sentences = nltk.sent_tokenize(text)
+    sentences = [nltk.word_tokenize(sent) for sent in sentences]
+    sentences = [nltk.pos_tag(sent) for sent in sentences]
+    return jsonify(sentences)
+
 @app.route("/test")
 def indexnew():
     try:
