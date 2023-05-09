@@ -6,11 +6,11 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     try:
-        return 'working'
+        return render_template('test.html')
     except:
         return render_template('error.html')
 @app.route("/test")
-def index():
+def indexnew():
     try:
         host_name = socket.gethostname()
         host_ip = socket.gethostbyname(host_name)
