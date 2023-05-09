@@ -1,12 +1,20 @@
 from flask import Flask,render_template
 import socket
+import nltk;
+from nltk.tokenize import sent_tokenize 
+from nltk.tokenize import word_tokenize
+from flask import jsonify
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
+    text = request.args.get("text")
     try:
-        return render_template('test.html')
+        sentences = nltk.sent_tokenize(text)
+        sentences = [nltk.word_tokenize(sent) for sent in sentences]
+        sentences = [nltk.pos_tag(sent) for sent in sentences]
+        return jsonify(sentences)
     except:
         return render_template('error.html')
 @app.route("/test")
