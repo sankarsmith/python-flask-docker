@@ -1,6 +1,7 @@
 from flask import Flask,render_template
 import socket
 import nltk;
+nltk.download()
 from nltk.tokenize import sent_tokenize 
 from nltk.tokenize import word_tokenize
 from flask import jsonify
