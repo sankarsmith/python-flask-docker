@@ -1,7 +1,7 @@
 from flask import Flask,render_template
 import socket
 import nltk;
-nltk.download()
+# nltk.download()
 from nltk.tokenize import sent_tokenize 
 from nltk.tokenize import word_tokenize
 from flask import jsonify
@@ -16,6 +16,15 @@ def index():
     sentences = [nltk.word_tokenize(sent) for sent in sentences]
     sentences = [nltk.pos_tag(sent) for sent in sentences]
     return jsonify(sentences)
+
+@app.route("/download")
+def download():
+    print('Downloading')
+    nltk.download()
+    # sentences = nltk.sent_tokenize(text)
+    # sentences = [nltk.word_tokenize(sent) for sent in sentences]
+    # sentences = [nltk.pos_tag(sent) for sent in sentences]
+    return jsonify('Downlaoded')
 
 @app.route("/test")
 def indexnew():
