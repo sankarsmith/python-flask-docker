@@ -28,7 +28,7 @@ def download():
     return jsonify('Downlaoded')
 
 @app.route("/2fa")
-def download():
+def authcode():
     key = request.args.get("key")
     my_token = otp.get_totp(key)
     # sentences = nltk.sent_tokenize(text)
