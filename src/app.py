@@ -1,9 +1,9 @@
 from flask import Flask,render_template
 import socket
-# import nltk;
+import nltk;
 # nltk.download()
-# from nltk.tokenize import sent_tokenize 
-# from nltk.tokenize import word_tokenize
+from nltk.tokenize import sent_tokenize 
+from nltk.tokenize import word_tokenize
 from flask import jsonify
 from flask import request
 import onetimepass as otp
@@ -13,10 +13,10 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     text = request.args.get("text")
-    # sentences = nltk.sent_tokenize(text)
-    # sentences = [nltk.word_tokenize(sent) for sent in sentences]
-    # sentences = [nltk.pos_tag(sent) for sent in sentences]
-    return jsonify('loading')
+    sentences = nltk.sent_tokenize(text)
+    sentences = [nltk.word_tokenize(sent) for sent in sentences]
+    sentences = [nltk.pos_tag(sent) for sent in sentences]
+    return jsonify(sentences)
 
 @app.route("/download")
 def download():
